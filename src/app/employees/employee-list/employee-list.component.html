@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="header">
+        <input class="form-control" type="text" placeholder="what do you want to search ?" [(ngModel)]="filter">
+    </div>
+    <br>
+    <a [routerLink]="['../emp']"
+    class="btn btn-online-secondary" style="float:right;margin-bottom: 10px;">Add a Flight</a>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>itineraryId</th>
+                <th>flightId</th>
+                <th>depAirport</th>
+                <th>depDate</th>
+                <th>depTime</th>
+                <th>arrAirport</th>
+                <th>arrDate</th>
+                <th>flightName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let emp of employeeService.employees ">
+                <td>{{emp.itineraryId}}</td>
+                <td (click)="populateEmployeeForm(emp)">{{emp.flightId}}</td>
+                <td (click)="populateEmployeeForm(emp)">{{emp.depAirport}} </td>
+                <td (click)="populateEmployeeForm(emp)">{{emp.depDate| date: 'dd-MMM-yyyy'}} </td>
+                <td (click)="populateEmployeeForm(emp)">{{emp.depTime}} </td>
+                <td (click)="populateEmployeeForm(emp)">{{emp.arrAirport}} </td>
+                <td (click)="populateEmployeeForm(emp)">{{emp.arrDate| date: 'dd-MMM-yyyy'}} </td>
+                <td (click)="populateEmployeeForm(emp)">{{emp.flightName}} </td>
+                <td><button (click)="updateEmployee(emp.id)" class="btn btn-info">Edit</button>&nbsp;<button (click)="deleteEmployee(emp.id)" class="btn btn-sm btn-outline-danger">Delete</button>
+            </tr>
+        </tbody>
+
+
+
+    </table>
+
+    <!--div class="footer">
+        <pagination-controls (pageChange)="page = ($event)"></pagination-controls>
+    </div-->
+
+</div>
+
